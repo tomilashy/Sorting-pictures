@@ -4,21 +4,21 @@ Created on Jun 11, 2018
 @author: Jesutomi
 '''
 
-
 import time
 import pathlib
 import glob
 import os
 import shutil
-import  datetime
 
 
 files = glob.glob("*.jpg")
-files.sort(key=os.path.getctime)
+files2 = glob.glob("*.png")
+files.extend(files2)
+files.sort(key=os.path.getmtime)
 #print("\n".join(files))
 #printing out files in sorted form
 for  x in files:
-    times=os.path.getctime(x)
+    times=os.path.getmtime(x)
     real=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(times))
     print(f"{x}\t\t\t{real}")
 
